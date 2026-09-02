@@ -1,45 +1,48 @@
 # TokenMagico ERC20
 
-**TokenMagico** è un token ERC20 scritto in Solidity che estende l’implementazione di OpenZeppelin aggiungendo una tassa sulle transazioni, una tesoreria dedicata e la possibilità di mettere in pausa tutti i trasferimenti.
+An ERC20 token written in Solidity that extends the OpenZeppelin implementation by adding a transaction fee, a dedicated treasury, and the ability to pause all transfers.
 
-Il progetto nasce come esercizio pratico e dimostrativo per esplorare pattern comuni nello sviluppo di smart contract su Ethereum.
-
----
-
-## Caratteristiche principali
-
-- Standard **ERC20** basato su OpenZeppelin
-- Tassa configurabile sulle transazioni (0–100%)
-- Tesoreria che riceve automaticamente le fee
-- Esenzione dalla fee per indirizzi selezionati
-- Possibilità di **pausare** e **riattivare** tutti i trasferimenti
-- Controllo completo tramite **Ownable**
-- Eventi per tutte le operazioni amministrative rilevanti
+The project began as a practical exercise and demonstration to explore common patterns in smart contract development on Ethereum.
 
 ---
 
-## Logica della fee
+## Key Features
 
-Durante un trasferimento:
-
-- Se `taxFee == 0`, il trasferimento avviene normalmente
-- Se il mittente o il destinatario sono esenti, **nessuna fee viene applicata**
-- Altrimenti:
-  - una percentuale dell’importo viene inviata alla tesoreria
-  - il resto arriva al destinatario
-
-La fee è espressa come percentuale intera (`0–100`).
+- **ERC20** standard based on OpenZeppelin
+- Configurable transaction fee (0–100%)
+- Treasury that automatically collects fees
+- Fee exemption for selected addresses
+- Ability to **pause** and **resume** all transfers
+- Full control via **Ownable**
+- Events for all relevant administrative operations
 
 ---
 
-## Ruoli speciali
+## Fee Logic
+
+During a transfer:
+
+- If `taxFee == 0`, the transfer proceeds normally
+- If the sender or recipient is exempt, **no fee is applied**
+- Otherwise:
+  - a percentage of the amount is sent to the treasury
+  - the remainder goes to the recipient
+
+The fee is expressed as a whole number percentage (`0–100`).
+
+---
+
+## Special Roles
 
 - **Owner**
-  - Può modificare la fee
-  - Può cambiare la tesoreria
-  - Può impostare esenzioni
-  - Può mettere in pausa il contratto
+  - Can modify the fee
+  - Can change the treasury
+  - Can set exemptions
+  - Can pause the contract
 
 - **Treasury**
-  - Riceve automaticamente le fee
-  - È esente dalla tassa
+  - Automatically receives fees
+  - Is exempt from the fee
+
+
+Translated with DeepL.com (free version)
